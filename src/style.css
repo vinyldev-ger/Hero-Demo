@@ -1,0 +1,150 @@
+/* ── Reset & Base ─────────────────────────────────── */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --color-cream: #fdf6ec;
+  --color-dark: #1a1a1a;
+}
+
+body {
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background: var(--color-cream);
+  overflow: hidden;
+  height: 100vh;
+}
+
+/* ── Hero Container ───────────────────────────────── */
+.hero {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  cursor: crosshair;
+  user-select: none;
+}
+
+/* ── Background Layer (grayscale / blank) ──────────── */
+.hero-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url(img/bg_blank.png);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Hint Overlay ─────────────────────────────────── */
+.hint {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 20;
+  font-size: 0.9rem;
+  color: var(--color-dark);
+  opacity: 0.6;
+  pointer-events: none;
+  animation: hintPulse 2s ease-in-out infinite;
+  text-align: center;
+  white-space: nowrap;
+}
+
+@keyframes hintPulse {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.8;
+  }
+}
+
+/* ── Splash Elements ──────────────────────────────── */
+.splash {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  background-repeat: no-repeat;
+  mix-blend-mode: normal;
+  animation: splashAppear 0.4s ease-out;
+  z-index: 1;
+}
+
+.splash.day-time {
+  background-image: url(img/bg_colored.png);
+}
+.splash.night-time {
+  background-image: url(img/bg_colored_dark.png);
+}
+
+.splash.fading {
+  animation: splashFadeOut 0.5s ease-out forwards;
+}
+
+@keyframes splashAppear {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+@keyframes splashFadeOut {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.8);
+  }
+}
+
+/* ── 5 Organic Blob Clip-Paths ────────────────────── */
+.splash-shape-1 {
+  clip-path: polygon(
+    50% 0%, 65% 8%, 80% 5%, 92% 20%, 98% 35%, 100% 50%,
+    95% 68%, 98% 85%, 85% 95%, 68% 98%, 50% 100%, 32% 98%, 15% 95%,
+    5% 82%, 2% 65%, 0% 50%, 5% 32%, 8% 18%, 20% 8%, 35% 2%
+  );
+}
+.splash-shape-2 {
+  clip-path: polygon(
+    50% 0%, 70% 5%, 88% 12%, 95% 25%, 100% 45%, 95% 60%,
+    90% 75%, 80% 88%, 65% 96%, 50% 100%, 35% 95%, 20% 90%, 10% 78%,
+    3% 62%, 0% 48%, 5% 30%, 12% 15%, 25% 5%, 38% 2%
+  );
+}
+.splash-shape-3 {
+  clip-path: polygon(
+    50% 0%, 60% 10%, 75% 8%, 85% 18%, 95% 25%, 100% 40%,
+    98% 55%, 92% 70%, 88% 82%, 75% 92%, 60% 98%, 50% 100%, 38% 96%,
+    25% 88%, 15% 78%, 8% 65%, 2% 50%, 0% 35%, 8% 22%, 18% 10%, 32% 3%, 42% 0%
+  );
+}
+.splash-shape-4 {
+  clip-path: polygon(
+    50% 5%, 68% 8%, 82% 15%, 93% 28%, 98% 45%, 98% 62%,
+    92% 78%, 82% 90%, 68% 96%, 50% 98%, 32% 95%, 18% 88%, 8% 75%,
+    2% 58%, 2% 42%, 7% 25%, 18% 12%, 32% 6%
+  );
+}
+.splash-shape-5 {
+  clip-path: polygon(
+    50% 2%, 62% 12%, 78% 18%, 88% 32%, 95% 48%, 92% 65%,
+    82% 80%, 70% 90%, 55% 96%, 42% 92%, 28% 82%, 18% 68%, 10% 52%,
+    8% 38%, 15% 22%, 28% 10%, 40% 4%
+  );
+}
